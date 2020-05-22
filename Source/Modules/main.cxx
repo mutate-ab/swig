@@ -1112,7 +1112,7 @@ int SWIG_main(int argc, char *argv[], const TargetLanguageModule *tlm) {
       if (depend) {
 	if (!no_cpp) {
 	  String *outfile;
-          File *f_dependencies_file = 0;
+	  File *f_dependencies_file = 0;
 
 	  String *inputfile_filename = outcurrentdir ? Swig_file_filename(input_file): Copy(input_file);
 	  String *basename = Swig_file_basename(inputfile_filename);
@@ -1154,7 +1154,7 @@ int SWIG_main(int argc, char *argv[], const TargetLanguageModule *tlm) {
                 use_file = 0;
             }
             if (use_file) {
-              Printf(f_dependencies_file, "\\\n  %s ", Getitem(files, i));
+              Printf(f_dependencies_file, "\\\n  %s ", Swig_filename_escape_space(Getitem(files, i)));
               if (depend_phony)
                 Append(phony_targets, Getitem(files, i));
             }
