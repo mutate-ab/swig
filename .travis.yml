@@ -446,4 +446,5 @@ script:
   - if test -n "$SWIGLANG"; then make $SWIGJOBS check-$SWIGLANG-test-suite CFLAGS="$cflags" CXXFLAGS="$cxxflags"; fi
   - echo 'Cleaning...' && echo -en 'travis_fold:start:script.3\\r'
   - make check-maintainer-clean && ../../configure $CONFIGOPTS
+  - if test -z "$SWIGLANG"; then cmake -DCMAKE_INSTALL_PREFIX=~/.local ../.. && make install && ~/.local/bin/swig -version; fi
   - echo -en 'travis_fold:end:script.3\\r'
